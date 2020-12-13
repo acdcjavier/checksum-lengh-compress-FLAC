@@ -6,8 +6,11 @@ This script is ideal for your album lossless FLAC files
 Before running the script, you must first install shntool, flac, exiftool and lz4
 
 sudo apt-get install shntool
+
 sudo apt-get install flac
+
 sudo apt-get install exiftool
+
 sudo apt-get install lz4
 
 The script file should be inside the folder where all your lossless audio folders are located.
