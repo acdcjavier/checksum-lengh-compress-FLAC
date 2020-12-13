@@ -5,13 +5,10 @@ This script is ideal for your album lossless FLAC files
 
 Before running the script, you must first install shntool, flac, exiftool and lz4
 
-'sudo apt-get install shntool'
-
-'sudo apt-get install flac'
-
-'sudo apt-get install exiftool'
-
-'sudo apt-get install lz4'
+sudo apt-get install shntool
+sudo apt-get install flac
+sudo apt-get install exiftool
+sudo apt-get install lz4
 
 The script file should be inside the folder where all your lossless audio folders are located.
 To run the script you just have to run it like this in the terminal.
@@ -74,6 +71,5 @@ During the creation of the script, I have noticed some errors that I have discov
 Any modifications I make to this script, I will add it to my github repository, and later the update will be added here.
 
 Of course, I accept all the modifications of people who know the subject and that we can improve this script for the help of the community.
-
 
 Please if you want to test this script, make a backup of some bootlegs and check the script there, if you like the results, you can apply them to all other audios.
