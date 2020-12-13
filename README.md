@@ -1,14 +1,17 @@
 # checksum-lengh-compress-FLAC
-add checksum st5, total duration lengh and compress for flac files
+Add checksum st5, total duration lengh and compress for flac files
 
 This script is ideal for your album lossless FLAC files
 
 Before running the script, you must first install shntool, flac, exiftool and lz4
 
-sudo apt-get install shntool
-sudo apt-get install flac
-sudo apt-get install exiftool
-sudo apt-get install lz4
+'sudo apt-get install shntool'
+
+'sudo apt-get install flac'
+
+'sudo apt-get install exiftool'
+
+'sudo apt-get install lz4'
 
 The script file should be inside the folder where all your lossless audio folders are located.
 To run the script you just have to run it like this in the terminal.
@@ -38,14 +41,12 @@ For example:
 
 Before execute script:
 
-Quote:
 1985-01-19 - Rockdrome, Rio de Janeiro, Brazil [FLAC]
 
 After execute script:
 
 1985-01-19 - Rockdrome, Rio de Janeiro, Brazil [FLAC][75.35]
 In this case, the bootlegs has duration 75 minutes and 35 seconds.
-
 
 lz4 compression/decompression/Verify
 
