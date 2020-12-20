@@ -5,6 +5,7 @@
 	echo "2) calulate lengh [Total Minutes.Total Seconds]"
 	echo "3) lz4 compression/decompression/Verify"
 	echo "4) All-in-one (Checksum + lengh + compression tar.lz4)"
+	echo "5) Check integrity of FLAC files"
 	echo ""
 	read opcion1
 
@@ -23,10 +24,10 @@
 		a=$d
 		z="$(basename "$d")"
 		cd "$d"
-		var=$(find * -name '*.flac' | shntool len  | tail -n1 | tr ':' '.'| sed 's/^[ t]*//' | cut -d "." -f 1,2 )
+		var=$(find * -regex ".*\.\(flac\|mp3\|wav\|shn\)" | shntool len  | tail -n1 | tr ':' '.'| sed 's/^[ t]*//' | cut -d "." -f 1,2 )
 		c=$z$"[$var]"
 		if [ "$var" == '0.00' ]; then
-			NEW_NAME="$(find . -type f -name '*.flac' | xargs exiftool -n -q -p '${Duration;our $sum;$_=ConvertDuration($sum+=$_)}' *.flac | tail -n1 | tr ':' ' ' | awk -v ALBUM="$ALBUM" '
+			NEW_NAME="$(find . ".*\.\(flac\|mp3\|wav\|shn\)" | xargs exiftool -n -q -p '${Duration;our $sum;$_=ConvertDuration($sum+=$_)}' ".*\.\(flac\|mp3\|wav\|shn\)" | tail -n1 | tr ':' ' ' | awk -v ALBUM="$ALBUM" '
 			{ total_minutes += $1 * 60 } # Accumulate hours
 			{ total_minutes += $2 }      # Accumulate minutes
 			{ total_seconds += $3 }      # Accumulate seconds
@@ -62,7 +63,18 @@
 		exit 0
 		
 	}
-	
+	integrity () {
+		for d in */ ; do
+		a=$d
+		cd "$d"
+		echo "****************************"
+		echo "analyzing:  $d"
+		echo "****************************"
+		find . -type f -name '*.flac' -print0 | xargs --null flac -tw
+		cd - 
+		echo "$d"
+		done
+	}
 	if [ $opcion1 = 1 ]; then
 		checksum
 	fi
@@ -109,6 +121,9 @@
 		checksum
 		duration
 		compress
+	fi
+	if [ $opcion1 = 5 ]; then
+		integrity
 	fi
 		
 	
